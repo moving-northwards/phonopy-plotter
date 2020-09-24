@@ -87,7 +87,7 @@ end
 
 %%
 d = (ymax-ymin)/(2*width/100); % space between x axis and label
-off = D(nsympoint,nqpoint)/100; % offset of x axis label to vertical lines
+offset = D(nsympoint,nqpoint)/100; % offset of x axis label to vertical lines
 
 figure('colormap',colormap)
 for i=1:nsympoint
@@ -97,12 +97,12 @@ for i=1:nsympoint
     end
 end
 plot([0 D(nsympoint,nqpoint)], [0 0],'k'); hold on % Horizontal line at zero
-text(0-off, ymin-d,str{1,1}); hold on % First label
+text(0-offset, ymin-d,str{1,1}); hold on % First label
 for i=1:nsympoint % plot high symmetry point vertical lines plus all other labels
     plot([D(i,nqpoint) D(i,nqpoint)],[ymin ymax],'k')
     hold on
     try
-        text(D(i,nqpoint)-off,ymin-d,str{1,i+1})
+        text(D(i,nqpoint)-offset,ymin-d,str{1,i+1})
     catch
         disp('number of symmetry point labels is less than number of symmetry points in chosen path')
     end
